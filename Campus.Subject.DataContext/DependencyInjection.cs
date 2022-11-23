@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Campus.Subject.DataContext.Repositories.UoW;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,5 +15,7 @@ public static class DependencyInjection
                 b => b.MigrationsAssembly("Campus.Subject.DataContext")));
 
         services.AddScoped<CampusDbContext>();
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 }
