@@ -26,4 +26,13 @@ public class SubjectController : BaseController
 
         return CreatedAtAction(nameof(AddSubject), subject);
     }
+
+    [HttpGet("teachers")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetTeachersForSubject(Guid subjectId)
+    {
+        var teachers = await _subjectService.GetTeachersForLessonAsync(subjectId);
+
+        return Ok(teachers);
+    }
 }
