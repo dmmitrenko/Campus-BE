@@ -3,5 +3,5 @@
 public record AddSubjectForTeacherRequest
 {
     public Guid TeacherId { get; init; }
-    public Guid SubjectId { get; init; }
+    public Guid LessonId { get; init; }
 }

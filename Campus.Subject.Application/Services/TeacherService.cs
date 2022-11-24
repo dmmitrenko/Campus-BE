@@ -11,15 +11,18 @@ public class TeacherService : ITeacherService
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IReadTeacherRepository _teacherRepository;
+    private readonly IReadSubjectRepository _subjectRepository;
 
     public TeacherService(
         IMapper mapper, 
         IUnitOfWork unitOfWork,
-        IReadTeacherRepository teacherRepository)
+        IReadTeacherRepository teacherRepository,
+        IReadSubjectRepository subjectRepository)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
         _teacherRepository = teacherRepository;
+        _subjectRepository = subjectRepository;
     }
 
     public async Task<TeacherModel> AddTeacherAsync(TeacherModel teacherModel)
@@ -32,13 +35,24 @@ public class TeacherService : ITeacherService
         return _mapper.Map<TeacherModel>(teacher);
     }
 
-    public async Task<IEnumerable<Guid>> GetTeacherLessonsAsync(Guid teacherId)
+    public async Task<IEnumerable<LessonModel>> GetTeacherLessonsAsync(Guid teacherId)
     {
         var teacher = await _teacherRepository
             .FindByConditionWithIncludes(n => n.Id == teacherId, x => x.TeacherLessons);
-        var subjectIds = teacher.TeacherLessons.Select(n => n.LessonId);
 
-        return subjectIds;
+        if (teacher is null)
+            throw new NotImplementedException();
+
+        var subjects = new List<LessonModel>();
+
+        foreach (var item in teacher.TeacherLessons)
+        {
+            var subject = await _subjectRepository.FindByIdAsync(item.LessonId);
+            var subjectModel = _mapper.Map<LessonModel>(subject);
+            subjects.Add(subjectModel);
+        }
+
+        return subjects;
     }
 
     public async Task<TeacherLessonsModel> AddTeacherLessonsAsync(TeacherLessonsModel teacherLessonsModel)

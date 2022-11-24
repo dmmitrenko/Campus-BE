@@ -31,9 +31,12 @@ public class TeacherController : BaseController
     }
 
     [HttpGet("subjects")]
-    public async Task<IActionResult> GetTeacherLessons([FromBody] GetTeacherLessonsRequest request)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetTeacherLessons(Guid teacherId)
     {
-        throw new NotImplementedException();
+        var subjects = await _teacherService.GetTeacherLessonsAsync(teacherId);
+
+        return Ok(subjects);
     }
 
     [HttpPost("subject")]
