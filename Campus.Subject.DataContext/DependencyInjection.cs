@@ -1,4 +1,6 @@
-﻿using Campus.Subject.DataContext.Repositories.UoW;
+﻿using Campus.Subject.DataContext.Repositories.Implementations;
+using Campus.Subject.DataContext.Repositories.Interfaces;
+using Campus.Subject.DataContext.Repositories.UoW;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,8 @@ public static class DependencyInjection
                 b => b.MigrationsAssembly("Campus.Subject.DataContext")));
 
         services.AddScoped<CampusDbContext>();
+
+        services.AddScoped<IReadTeacherRepository, ReadTeacherRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

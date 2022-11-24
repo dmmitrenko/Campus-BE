@@ -1,6 +1,4 @@
-﻿using Campus.Subject.Domain.Models.Enums;
-
-namespace Campus.Subject.DataContext.Entities;
+﻿namespace Campus.Subject.DataContext.Entities;
 public class DailySchedule
 {
     public DateOnly Date { get; set; }

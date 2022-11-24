@@ -8,5 +8,6 @@ public static class ServiceExtensions
     public static void ConfigureServices(this IServiceCollection services)
     {
         services.AddScoped<ISubjectService, SubjectService>();
+        services.AddScoped<ITeacherService, TeacherService>();
     }
 }

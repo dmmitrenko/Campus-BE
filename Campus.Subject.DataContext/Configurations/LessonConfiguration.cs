@@ -1,5 +1,4 @@
 ﻿using Campus.Subject.DataContext.Entities;
-using Campus.Subject.Domain.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

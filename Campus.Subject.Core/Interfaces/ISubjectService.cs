@@ -3,5 +3,5 @@
 namespace Campus.Subject.Core.Interfaces;
 public interface ISubjectService
 {
-    Task<LessonModel> AddSubjectAsync(LessonModel lesson);
+    Task<LessonModel> AddSubjectAsync(LessonModel lessonModel);
 }

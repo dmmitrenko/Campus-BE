@@ -43,7 +43,7 @@ namespace Campus.Subject.DataContext.Migrations
                     b.HasIndex("Title")
                         .IsUnique();
 
-                    b.ToTable("Classrooms");
+                    b.ToTable("Classrooms", (string)null);
                 });
 
             modelBuilder.Entity("Campus.Subject.DataContext.Entities.DailySchedule", b =>
@@ -65,7 +65,7 @@ namespace Campus.Subject.DataContext.Migrations
 
                     b.HasIndex("ClassroomId");
 
-                    b.ToTable("Schedules");
+                    b.ToTable("Schedules", (string)null);
                 });
 
             modelBuilder.Entity("Campus.Subject.DataContext.Entities.Lesson", b =>
@@ -80,7 +80,7 @@ namespace Campus.Subject.DataContext.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lessons", (string)null);
                 });
 
             modelBuilder.Entity("Campus.Subject.DataContext.Entities.LessonNumber", b =>
@@ -99,7 +99,7 @@ namespace Campus.Subject.DataContext.Migrations
 
                     b.HasKey("Number");
 
-                    b.ToTable("LessonNumbers");
+                    b.ToTable("LessonNumbers", (string)null);
 
                     b.HasData(
                         new
@@ -164,7 +164,7 @@ namespace Campus.Subject.DataContext.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("Campus.Subject.DataContext.Entities.TeacherLessons", b =>
@@ -179,7 +179,7 @@ namespace Campus.Subject.DataContext.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("TeacherLesson");
+                    b.ToTable("TeacherLesson", (string)null);
                 });
 
             modelBuilder.Entity("Campus.Subject.DataContext.Entities.TimeTable", b =>
@@ -199,7 +199,7 @@ namespace Campus.Subject.DataContext.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("TimeTables");
+                    b.ToTable("TimeTables", (string)null);
                 });
 
             modelBuilder.Entity("Campus.Subject.DataContext.Entities.DailySchedule", b =>
