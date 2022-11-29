@@ -37,22 +37,13 @@ public class TeacherService : ITeacherService
 
     public async Task<IEnumerable<LessonModel>> GetTeacherLessonsAsync(Guid teacherId)
     {
-        var teacher = await _teacherRepository
-            .FindByConditionWithIncludes(n => n.Id == teacherId, x => x.TeacherLessons);
+        var teacher = await _teacherRepository.GetTeacherWithSubjects(teacherId);
 
         if (teacher is null)
             throw new NotImplementedException();
 
-        var subjects = new List<LessonModel>();
-
-        foreach (var item in teacher.TeacherLessons)
-        {
-            var subject = await _subjectRepository.FindByIdAsync(item.LessonId);
-            var subjectModel = _mapper.Map<LessonModel>(subject);
-            subjects.Add(subjectModel);
-        }
-
-        return subjects;
+        var subjects = teacher.TeacherLessons.Select(x => x.Lesson);
+        return _mapper.Map<IEnumerable<LessonModel>>(subjects);
     }
 
     public async Task<TeacherLessonsModel> AddTeacherLessonsAsync(TeacherLessonsModel teacherLessonsModel)
