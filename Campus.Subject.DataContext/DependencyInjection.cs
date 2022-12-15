@@ -20,6 +20,7 @@ public static class DependencyInjection
 
         services.AddScoped<IReadTeacherRepository, ReadTeacherRepository>();
         services.AddScoped<IReadSubjectRepository, ReadSubjectRepository>();
+        services.AddScoped<IReadClassRepository, ReadClassRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

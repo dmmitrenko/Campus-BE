@@ -9,5 +9,6 @@ public static class ServiceExtensions
     {
         services.AddScoped<ISubjectService, SubjectService>();
         services.AddScoped<ITeacherService, TeacherService>();
+        services.AddScoped<IClassroomService, ClassroomService>();
     }
 }
