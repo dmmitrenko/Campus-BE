@@ -3,9 +3,9 @@ using Campus.Core.Interfaces;
 
 namespace Campus.API.Extensions;
 
-public static class ServiceExtensions
+public class ServiceInstaller : IInstaller
 {
-    public static void ConfigureServices(this IServiceCollection services)
+    public void InstallServices(IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<ISubjectService, SubjectService>();
         services.AddScoped<ITeacherService, TeacherService>();

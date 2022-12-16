@@ -1,12 +1,10 @@
-﻿using Campus.Domain.Exceptions;
-using Campus.API.ExceptionResolvers.Base;
-using Campus.API.Models.Helpers;
+﻿using Campus.API.Models.ErrorResponses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Campus.API.ExceptionResolvers;
+namespace Campus.API.ExceptionResolvers.Base;
 
-public class AppExceptionResolver : IExceptionResolver<CampusException>
+public class AppExceptionResolver : IExceptionResolver
 {
     private readonly ILogger _logger;
 
@@ -18,7 +16,7 @@ public class AppExceptionResolver : IExceptionResolver<CampusException>
     public void OnException(ExceptionContext context)
     {
         var id = Guid.NewGuid();
-        var errorResponse = new ErrorDetails
+        var errorResponse = new ErrorModel
         {
             StatusCode = StatusCodes.Status409Conflict,
             Message = $"Unexpected result, please contact to the support. Ticket id : {id}"

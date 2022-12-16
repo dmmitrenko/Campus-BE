@@ -3,6 +3,7 @@ using Campus.Core.Interfaces;
 using Campus.DataContext.Entities;
 using Campus.DataContext.Repositories.Interfaces;
 using Campus.DataContext.Repositories.UoW;
+using Campus.Domain.Exceptions;
 using Campus.Domain.Models;
 
 namespace Campus.Application.Services;
@@ -40,7 +41,7 @@ public class TeacherService : ITeacherService
         var teacher = await _teacherRepository.GetTeacherWithSubjects(teacherId);
 
         if (teacher is null)
-            throw new NotImplementedException();
+            throw new TeacherNotFoundException(teacherId);
 
         var subjects = teacher.TeacherLessons.Select(x => x.Lesson);
         return _mapper.Map<IEnumerable<LessonModel>>(subjects);
