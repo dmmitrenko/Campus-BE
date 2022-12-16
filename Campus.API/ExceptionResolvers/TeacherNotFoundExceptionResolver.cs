@@ -1,30 +1,30 @@
 ﻿using Campus.API.ExceptionResolvers.Base;
 using Campus.API.Models.ErrorResponses;
+using Campus.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Campus.API.ExceptionResolvers;
 
-public class AppExceptionResolver : IExceptionResolver
+public class TeacherNotFoundExceptionResolver : IExceptionResolver<TeacherNotFoundException>
 {
     private readonly ILogger _logger;
 
-    public AppExceptionResolver(ILogger<AppExceptionResolver> logger)
+    public TeacherNotFoundExceptionResolver(ILogger<TeacherNotFoundException> logger)
     {
         _logger = logger;
     }
 
     public void OnException(ExceptionContext context)
     {
-        var id = Guid.NewGuid();
         var errorResponse = new ErrorModel
         {
-            StatusCode = StatusCodes.Status409Conflict,
-            Message = $"Unexpected result, please contact to the support. Ticket id : {id}"
+            StatusCode = StatusCodes.Status404NotFound,
+            Message = context.Exception.Message
         };
 
-        _logger.LogError(context.Exception, $"ErrorId : {id}");
-        context.HttpContext.Response.StatusCode = StatusCodes.Status409Conflict;
+        _logger.LogInformation(context.Exception.Message);
+        context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
         context.Result = new ObjectResult(errorResponse);
     }
 }
