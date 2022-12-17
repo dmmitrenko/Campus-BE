@@ -13,6 +13,8 @@ public class ClassroomConfiguration : IEntityTypeConfiguration<Classroom>
         builder.Property(n => n.Title).IsRequired();
         builder.Property(n => n.Grade).IsRequired();
         builder.Property(n => n.SemesterStartDate).IsRequired();
+        builder.Property(n => n.SemesterEndDate).IsRequired();
+        builder.Property(n => n.SemesterNumber).IsRequired();
 
         builder.HasMany(x => x.Schedules)
             .WithOne(x => x.Classroom)

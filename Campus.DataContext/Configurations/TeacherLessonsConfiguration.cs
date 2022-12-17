@@ -7,7 +7,7 @@ public class TeacherLessonsConfiguration : IEntityTypeConfiguration<TeacherLesso
 {
     public void Configure(EntityTypeBuilder<TeacherLessons> builder)
     {
-        builder.HasKey(n => new { n.TeacherId, n.LessonId });
+        builder.HasKey(n => n.Id);
 
         builder.HasOne(x => x.Lesson)
             .WithMany(x => x.TeacherLessons)

@@ -5,5 +5,5 @@ public class LessonNumberModel
     public TimeOnly StartTime { get; set; }
     public TimeOnly EndTime { get; set; }
 
-    public TimeTableModel TimeTable { get; set; }
+    public IEnumerable<ScheduleModel> Schedules { get; set; }
 }

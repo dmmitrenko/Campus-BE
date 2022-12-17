@@ -3,20 +3,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campus.DataContext.Configurations;
-internal class ScheduleConfiguration : IEntityTypeConfiguration<DailySchedule>
+internal class ScheduleConfiguration : IEntityTypeConfiguration<Schedule>
 {
-    public void Configure(EntityTypeBuilder<DailySchedule> builder)
+    public void Configure(EntityTypeBuilder<Schedule> builder)
     {
-        builder.HasKey(n => n.Date);
+        builder.HasKey(n => new { n.Date, n.LessonNumber, n.ClassroomId });
 
         builder.Property(n => n.Date).HasColumnType("date").IsRequired();
         builder.Property(n => n.DayOfWeek).HasConversion<string>().IsRequired();
-        builder.Property(n => n.ClassroomId).IsRequired();
         builder.Property(n => n.WeekNumber).IsRequired();
+        builder.Property(n => n.TeacherLessonId).IsRequired();
 
-        builder.HasMany(x => x.Times)
-            .WithOne(x => x.DailySchedule)
-            .HasForeignKey(x => x.Day)
-            .OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne(n => n.TeacherLessons)
+            .WithOne(n => n.Schedule)
+            .HasForeignKey<Schedule>(n => n.TeacherLessonId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

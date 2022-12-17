@@ -7,5 +7,4 @@ public class LessonModel
     public string Title { get; set; }
 
     public IEnumerable<TeacherLessonsModel> TeacherLessons { get; set; }
-    public IEnumerable<TimeTableModel> TimeTables { get; set; }
 }
