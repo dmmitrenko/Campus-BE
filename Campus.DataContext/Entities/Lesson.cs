@@ -5,5 +5,4 @@ public class Lesson
     public string Title { get; set; }
 
     public IEnumerable<TeacherLessons> TeacherLessons { get; set; }
-    public IEnumerable<TimeTable> TimeTables { get; set; }
 }

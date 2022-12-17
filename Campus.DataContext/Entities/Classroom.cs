@@ -5,6 +5,8 @@ public class Classroom
     public string Title { get; set; }
     public int Grade { get; set; }
     public DateOnly SemesterStartDate { get; set; }
+    public DateOnly SemesterEndDate { get; set; }
+    public int SemesterNumber { get; set; }
 
-    public IEnumerable<DailySchedule> Schedules { get; set; }
+    public IEnumerable<Schedule> Schedules { get; set; }
 }

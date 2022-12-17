@@ -15,7 +15,7 @@ public static class DependencyInjection
         services.AddDbContext<CampusDbContext>(options =>
             options.UseNpgsql(
                 configuration.GetConnectionString("LocalConnection"),
-                b => b.MigrationsAssembly("Campus.Subject.DataContext")));
+                b => b.MigrationsAssembly("Campus.DataContext")));
 
         services.AddScoped<CampusDbContext>();
 
