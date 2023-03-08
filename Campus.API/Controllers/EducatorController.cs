@@ -6,13 +6,14 @@ using Campus.API.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Campus.API.Controllers;
-public class TeacherController : BaseController
+public class EducatorController : BaseController<EducatorController>
 {
-    private readonly ITeacherService _teacherService;
+    private readonly IEducatorService _teacherService;
 
-    public TeacherController(
+    public EducatorController(
         IMapper mapper,
-        ITeacherService teacherService) : base(mapper)
+        ILogger<EducatorController> logger,
+        IEducatorService teacherService) : base(mapper, logger)
     {
         _teacherService = teacherService;
     }
@@ -21,7 +22,7 @@ public class TeacherController : BaseController
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> AddTeacher([FromBody] AddTeacherRequest request)
     {
-        var teacherModel = _mapper.Map<TeacherModel>(request);
+        var teacherModel = Mapper.Map<TeacherModel>(request);
         var teacher = await _teacherService.AddTeacherAsync(teacherModel);
 
         return CreatedAtAction(nameof(AddTeacher), teacher);
@@ -39,7 +40,7 @@ public class TeacherController : BaseController
     [HttpPost("subject")]
     public async Task<IActionResult> AddSubjectForTeacher([FromBody] AddSubjectForTeacherRequest request)
     {
-        var teacherLessonModel = _mapper.Map<TeacherLessonsModel>(request);
+        var teacherLessonModel = Mapper.Map<TeacherLessonsModel>(request);
         var teacherSubject = await _teacherService.AddTeacherLessonsAsync(teacherLessonModel);
 
         return CreatedAtAction(nameof(AddSubjectForTeacher), teacherSubject);

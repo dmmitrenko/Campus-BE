@@ -6,13 +6,14 @@ using Campus.API.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Campus.API.Controllers;
-public class SubjectController : BaseController
+public class CourseController : BaseController<CourseController>
 {
-    private readonly ISubjectService _subjectService;
+    private readonly ICourseService _subjectService;
 
-    public SubjectController(
+    public CourseController(
         IMapper mapper,
-        ISubjectService subjectService) : base(mapper)
+        ILogger<CourseController> logger,
+        ICourseService subjectService) : base(mapper, logger)
     {
         _subjectService = subjectService;
     }
@@ -21,7 +22,7 @@ public class SubjectController : BaseController
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> AddSubject([FromBody] AddSubjectRequest request)
     {
-        var subjectModel = _mapper.Map<LessonModel>(request);
+        var subjectModel = Mapper.Map<LessonModel>(request);
         var subject = await _subjectService.AddSubjectAsync(subjectModel);
 
         return CreatedAtAction(nameof(AddSubject), subject);

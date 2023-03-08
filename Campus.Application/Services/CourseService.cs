@@ -7,14 +7,14 @@ using Campus.Domain.Models;
 using Npgsql.TypeMapping;
 
 namespace Campus.Application.Services;
-public class SubjectService : ISubjectService
+public class CourseService : ICourseService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IReadSubjectRepository _subjectRepository;
     private readonly IReadTeacherRepository _teacherRepository;
 
-    public SubjectService(
+    public CourseService(
         IMapper mapper,
         IUnitOfWork unitOfWork,
         IReadSubjectRepository subjectRepository,

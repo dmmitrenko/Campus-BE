@@ -4,9 +4,9 @@ using Campus.Domain.Models;
 
 namespace Campus.API.MapperProfiles;
 
-public class TeacherLessonsProfile : Profile
+public class EducatorCourseProfile : Profile
 {
-    public TeacherLessonsProfile()
+    public EducatorCourseProfile()
     {
         CreateMap<AddSubjectForTeacherRequest, TeacherLessonsModel>();
     }

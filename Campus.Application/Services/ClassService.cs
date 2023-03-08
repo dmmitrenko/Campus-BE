@@ -5,12 +5,12 @@ using Campus.DataContext.Repositories.UoW;
 using Campus.Domain.Models;
 
 namespace Campus.Application.Services;
-public class ClassroomService : IClassroomService
+public class ClassService : IClassService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public ClassroomService(
+    public ClassService(
         IMapper mapper,
         IUnitOfWork unitOfWork)
     {

@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Campus.API.Controllers;
 
-public class ClassController : BaseController
+public class ClassController : BaseController<ClassController>
 {
-    private readonly IClassroomService _classService;
+    private readonly IClassService _classService;
 
     public ClassController(
         IMapper mapper,
-        IClassroomService classService) : base(mapper)
+        ILogger<ClassController> logger,
+        IClassService classService) : base(mapper, logger)
     {
         _classService = classService;
     }
@@ -21,7 +22,7 @@ public class ClassController : BaseController
     [HttpPost]
     public async Task<IActionResult> AddClassroom([FromBody] AddClassroomRequest request)
     {
-        var classModel = _mapper.Map<ClassroomModel>(request);
+        var classModel = Mapper.Map<ClassroomModel>(request);
         var classroom = await _classService.AddClassroomAsync(classModel);
 
         return CreatedAtAction(nameof(AddClassroom), classroom);

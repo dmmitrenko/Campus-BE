@@ -3,10 +3,10 @@ using Campus.DataContext.Entities;
 using Campus.Domain.Models;
 
 namespace Campus.Application.MapperProfiles;
-public class TeacherProfile : Profile
+public class CourseProfile : Profile
 {
-    public TeacherProfile()
+    public CourseProfile()
     {
-        CreateMap<TeacherModel, Teacher>().ReverseMap();
+        CreateMap<Lesson, LessonModel>().ReverseMap();
     }
 }

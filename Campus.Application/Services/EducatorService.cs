@@ -7,14 +7,14 @@ using Campus.Domain.Exceptions;
 using Campus.Domain.Models;
 
 namespace Campus.Application.Services;
-public class TeacherService : ITeacherService
+public class EducatorService : IEducatorService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IReadTeacherRepository _teacherRepository;
     private readonly IReadSubjectRepository _subjectRepository;
 
-    public TeacherService(
+    public EducatorService(
         IMapper mapper,
         IUnitOfWork unitOfWork,
         IReadTeacherRepository teacherRepository,
@@ -41,7 +41,7 @@ public class TeacherService : ITeacherService
         var teacher = await _teacherRepository.GetTeacherWithSubjects(teacherId);
 
         if (teacher is null)
-            throw new TeacherNotFoundException(teacherId);
+            throw new NotFoundException($"The teacher with this ID: {teacherId} was not found");
 
         var subjects = teacher.TeacherLessons.Select(x => x.Lesson);
         return _mapper.Map<IEnumerable<LessonModel>>(subjects);

@@ -3,14 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Campus.API.Controllers.Base;
 
-[ApiController]
-[Route("api/[controller]")]
-public abstract class BaseController : Controller
+public abstract class BaseController<TController> : Controller where TController : BaseController<TController>
 {
-    protected readonly IMapper _mapper;
 
-    protected BaseController(IMapper mapper)
+    protected BaseController(IMapper mapper, ILogger<TController> logger)
     {
-        _mapper = mapper;
+        Mapper = mapper;
+        Logger = logger;
     }
+
+    public IMapper Mapper { get; }
+    public ILogger<TController> Logger { get; }
 }
