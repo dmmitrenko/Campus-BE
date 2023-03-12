@@ -8,6 +8,6 @@ public class EducatorProfile : Profile
 {
     public EducatorProfile()
     {
-        CreateMap<AddTeacherRequest, Educator>();
+        CreateMap<AddEducatorRequest, Educator>();
     }
 }

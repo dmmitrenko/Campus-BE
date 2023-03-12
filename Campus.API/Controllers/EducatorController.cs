@@ -20,7 +20,7 @@ public class EducatorController : BaseController<EducatorController>
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> AddTeacher([FromBody] AddTeacherRequest request)
+    public async Task<IActionResult> AddTeacher([FromBody] AddEducatorRequest request)
     {
         var teacherModel = Mapper.Map<Educator>(request);
         var teacher = await _teacherService.AddTeacherAsync(teacherModel);
@@ -38,7 +38,7 @@ public class EducatorController : BaseController<EducatorController>
     }
 
     [HttpPost("subject")]
-    public async Task<IActionResult> AddSubjectForTeacher([FromBody] AddSubjectForTeacherRequest request)
+    public async Task<IActionResult> AddSubjectForTeacher([FromBody] AddCourseForEducatorRequest request)
     {
         var teacherLessonModel = Mapper.Map<EducatorCourse>(request);
         var teacherSubject = await _teacherService.AddTeacherLessonsAsync(teacherLessonModel);

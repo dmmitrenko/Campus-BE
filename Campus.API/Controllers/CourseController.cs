@@ -20,7 +20,7 @@ public class CourseController : BaseController<CourseController>
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> AddSubject([FromBody] AddSubjectRequest request)
+    public async Task<IActionResult> AddSubject([FromBody] AddCourseRequest request)
     {
         var subjectModel = Mapper.Map<Course>(request);
         var subject = await _subjectService.AddSubjectAsync(subjectModel);

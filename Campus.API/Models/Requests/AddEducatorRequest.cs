@@ -1,6 +1,6 @@
 ﻿namespace Campus.API.Models.Requests;
 
-public record AddTeacherRequest
+public record AddEducatorRequest
 {
     public string FirstName { get; init; }
     public string? MiddleName { get; init; }

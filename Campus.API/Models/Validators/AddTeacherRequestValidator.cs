@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Campus.API.Models.Validators;
 
-public class AddTeacherRequestValidator : AbstractValidator<AddTeacherRequest>
+public class AddTeacherRequestValidator : AbstractValidator<AddEducatorRequest>
 {
     public AddTeacherRequestValidator()
     {
