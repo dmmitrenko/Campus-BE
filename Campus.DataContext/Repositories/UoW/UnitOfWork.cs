@@ -7,9 +7,9 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly CampusDbContext _context;
     private readonly ILogger _logger;
-    private readonly Lazy<IWriteSubjectRepository> _writeSubjectRepository;
-    private readonly Lazy<IWriteTeacherRepository> _writeTeacherRepository;
-    private readonly Lazy<IWriteTeacherSubjectRepository> _writeTeacherSubjectRepository;
+    private readonly Lazy<IWriteCourseRepository> _writeSubjectRepository;
+    private readonly Lazy<IWriteEducatorRepository> _writeTeacherRepository;
+    private readonly Lazy<IWriteEducatorCourseRepository> _writeTeacherSubjectRepository;
     private readonly Lazy<IWriteClassRepository> _writeClassRepository;
 
     public UnitOfWork(
@@ -19,20 +19,20 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
         _logger = logger;
         _writeSubjectRepository =
-            new Lazy<IWriteSubjectRepository>(() => new WriteSubjectRepository(_logger, _context));
+            new Lazy<IWriteCourseRepository>(() => new WriteCourseRepository(_logger, _context));
         _writeTeacherRepository =
-            new Lazy<IWriteTeacherRepository>(() => new WriteTeacherRepository(_logger, _context));
+            new Lazy<IWriteEducatorRepository>(() => new WriteEducatorRepository(_logger, _context));
         _writeTeacherSubjectRepository =
-            new Lazy<IWriteTeacherSubjectRepository>(() => new WriteTeacherLessonsRepository(_logger, _context));
+            new Lazy<IWriteEducatorCourseRepository>(() => new WriteEducatorCourseRepository(_logger, _context));
         _writeClassRepository =
             new Lazy<IWriteClassRepository>(() => new WriteClassRepository(_logger, _context));
     }
 
-    public IWriteSubjectRepository SubjectRepository => _writeSubjectRepository.Value;
+    public IWriteCourseRepository SubjectRepository => _writeSubjectRepository.Value;
 
-    public IWriteTeacherRepository TeacherRepository => _writeTeacherRepository.Value;
+    public IWriteEducatorRepository TeacherRepository => _writeTeacherRepository.Value;
 
-    public IWriteTeacherSubjectRepository TeacherSubjectRepository => _writeTeacherSubjectRepository.Value;
+    public IWriteEducatorCourseRepository TeacherSubjectRepository => _writeTeacherSubjectRepository.Value;
 
     public IWriteClassRepository ClassRepository => _writeClassRepository.Value;
 

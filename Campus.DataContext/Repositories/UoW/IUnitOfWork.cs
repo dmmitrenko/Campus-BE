@@ -3,9 +3,9 @@
 namespace Campus.DataContext.Repositories.UoW;
 public interface IUnitOfWork
 {
-    IWriteSubjectRepository SubjectRepository { get; }
-    IWriteTeacherRepository TeacherRepository { get; }
-    IWriteTeacherSubjectRepository TeacherSubjectRepository { get; }
+    IWriteCourseRepository SubjectRepository { get; }
+    IWriteEducatorRepository TeacherRepository { get; }
+    IWriteEducatorCourseRepository TeacherSubjectRepository { get; }
     IWriteClassRepository ClassRepository { get; }
     Task<int> SaveChangesAsync();
 }

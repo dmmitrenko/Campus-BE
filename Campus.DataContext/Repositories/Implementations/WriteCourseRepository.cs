@@ -5,9 +5,9 @@ using Campus.DataContext.Repositories.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace Campus.DataContext.Repositories.Implementations;
-public class WriteTeacherRepository : WriteRepository<Teacher>, IWriteTeacherRepository
+public class WriteCourseRepository : WriteRepository<Course>, IWriteCourseRepository
 {
-    public WriteTeacherRepository(
+    public WriteCourseRepository(
         ILogger logger,
         CampusDbContext context) : base(logger, context)
     {

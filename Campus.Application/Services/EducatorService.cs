@@ -11,14 +11,14 @@ public class EducatorService : IEducatorService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IReadTeacherRepository _teacherRepository;
-    private readonly IReadSubjectRepository _subjectRepository;
+    private readonly IReadEducatorRepository _teacherRepository;
+    private readonly IReadCourseRepository _subjectRepository;
 
     public EducatorService(
         IMapper mapper,
         IUnitOfWork unitOfWork,
-        IReadTeacherRepository teacherRepository,
-        IReadSubjectRepository subjectRepository)
+        IReadEducatorRepository teacherRepository,
+        IReadCourseRepository subjectRepository)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
@@ -26,17 +26,17 @@ public class EducatorService : IEducatorService
         _subjectRepository = subjectRepository;
     }
 
-    public async Task<TeacherModel> AddTeacherAsync(TeacherModel teacherModel)
+    public async Task<Domain.Models.Educator> AddTeacherAsync(Domain.Models.Educator teacherModel)
     {
-        var teacher = _mapper.Map<Teacher>(teacherModel);
+        var teacher = _mapper.Map<DataContext.Entities.Educator>(teacherModel);
 
         _unitOfWork.TeacherRepository.Add(teacher);
         await _unitOfWork.SaveChangesAsync();
 
-        return _mapper.Map<TeacherModel>(teacher);
+        return _mapper.Map<Domain.Models.Educator>(teacher);
     }
 
-    public async Task<IEnumerable<LessonModel>> GetTeacherLessonsAsync(Guid teacherId)
+    public async Task<IEnumerable<Domain.Models.Course>> GetTeacherLessonsAsync(Guid teacherId)
     {
         var teacher = await _teacherRepository.GetTeacherWithSubjects(teacherId);
 
@@ -44,16 +44,16 @@ public class EducatorService : IEducatorService
             throw new NotFoundException($"The teacher with this ID: {teacherId} was not found");
 
         var subjects = teacher.TeacherLessons.Select(x => x.Lesson);
-        return _mapper.Map<IEnumerable<LessonModel>>(subjects);
+        return _mapper.Map<IEnumerable<Domain.Models.Course>>(subjects);
     }
 
-    public async Task<TeacherLessonsModel> AddTeacherLessonsAsync(TeacherLessonsModel teacherLessonsModel)
+    public async Task<Domain.Models.EducatorCourse> AddTeacherLessonsAsync(Domain.Models.EducatorCourse teacherLessonsModel)
     {
-        var teacherSubject = _mapper.Map<TeacherLessons>(teacherLessonsModel);
+        var teacherSubject = _mapper.Map<DataContext.Entities.EducatorCourse>(teacherLessonsModel);
 
         _unitOfWork.TeacherSubjectRepository.Add(teacherSubject);
         await _unitOfWork.SaveChangesAsync();
 
-        return _mapper.Map<TeacherLessonsModel>(teacherSubject);
+        return _mapper.Map<Domain.Models.EducatorCourse>(teacherSubject);
     }
 }

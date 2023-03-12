@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campus.DataContext.Configurations;
-public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
+public class CourseConfiguration : IEntityTypeConfiguration<Course>
 {
-    public void Configure(EntityTypeBuilder<Lesson> builder)
+    public void Configure(EntityTypeBuilder<Course> builder)
     {
         builder.HasKey(n => n.Id);
         builder.HasIndex(n => n.Title).IsUnique();

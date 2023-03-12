@@ -11,14 +11,14 @@ public class CourseService : ICourseService
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IReadSubjectRepository _subjectRepository;
-    private readonly IReadTeacherRepository _teacherRepository;
+    private readonly IReadCourseRepository _subjectRepository;
+    private readonly IReadEducatorRepository _teacherRepository;
 
     public CourseService(
         IMapper mapper,
         IUnitOfWork unitOfWork,
-        IReadSubjectRepository subjectRepository,
-        IReadTeacherRepository teacherRepository)
+        IReadCourseRepository subjectRepository,
+        IReadEducatorRepository teacherRepository)
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;
@@ -26,16 +26,16 @@ public class CourseService : ICourseService
         _teacherRepository = teacherRepository;
     }
 
-    public async Task<LessonModel> AddSubjectAsync(LessonModel lessonModel)
+    public async Task<Domain.Models.Course> AddSubjectAsync(Domain.Models.Course lessonModel)
     {
-        var lesson = _mapper.Map<Lesson>(lessonModel);
+        var lesson = _mapper.Map<DataContext.Entities.Course>(lessonModel);
         _unitOfWork.SubjectRepository.Add(lesson);
         await _unitOfWork.SaveChangesAsync();
 
-        return _mapper.Map<LessonModel>(lesson);
+        return _mapper.Map<Domain.Models.Course>(lesson);
     }
 
-    public async Task<IEnumerable<TeacherModel>> GetTeachersForLessonAsync(Guid lessonId)
+    public async Task<IEnumerable<Domain.Models.Educator>> GetTeachersForLessonAsync(Guid lessonId)
     {
         var subject = await _subjectRepository
             .GetSubjectWithTeachers(lessonId);
@@ -45,6 +45,6 @@ public class CourseService : ICourseService
 
         var teachers = subject.TeacherLessons.Select(n => n.Teacher);
 
-        return _mapper.Map<IEnumerable<TeacherModel>>(teachers);
+        return _mapper.Map<IEnumerable<Domain.Models.Educator>>(teachers);
     }
 }

@@ -8,7 +8,7 @@ public class Schedule
     public Guid ClassroomId { get; set; }
     public Guid TeacherLessonId { get; set; }
 
-    public LessonNumber Number { get; set; }
+    public TimeTable Number { get; set; }
     public Classroom Classroom { get; set; }
-    public TeacherLessons TeacherLessons { get; set; }
+    public EducatorCourse TeacherLessons { get; set; }
 }

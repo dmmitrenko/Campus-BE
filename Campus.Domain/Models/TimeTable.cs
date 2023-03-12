@@ -1,9 +1,9 @@
 ﻿namespace Campus.Domain.Models;
-public class LessonNumberModel
+public class TimeTable
 {
     public int Number { get; set; }
     public TimeOnly StartTime { get; set; }
     public TimeOnly EndTime { get; set; }
 
-    public IEnumerable<ScheduleModel> Schedules { get; set; }
+    public IEnumerable<Schedule> Schedules { get; set; }
 }

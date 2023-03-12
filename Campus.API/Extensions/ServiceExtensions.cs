@@ -8,6 +8,7 @@ using Campus.API.Filters;
 using Campus.Domain.Converters;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Text.Json.Serialization;
+using Campus.API.Middleware;
 
 namespace Campus.API.Extensions;
 
@@ -59,5 +60,10 @@ public static class ServiceExtensions
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+    }
+
+    public static void UseExceptionMiddleware(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<ExceptionMiddleware>();
     }
 }

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campus.DataContext.Configurations;
-public class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
+public class EducatorConfiguration : IEntityTypeConfiguration<Educator>
 {
-    public void Configure(EntityTypeBuilder<Teacher> builder)
+    public void Configure(EntityTypeBuilder<Educator> builder)
     {
         builder.HasKey(x => x.Id);
 

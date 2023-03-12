@@ -22,7 +22,7 @@ public class ClassController : BaseController<ClassController>
     [HttpPost]
     public async Task<IActionResult> AddClassroom([FromBody] AddClassroomRequest request)
     {
-        var classModel = Mapper.Map<ClassroomModel>(request);
+        var classModel = Mapper.Map<Classroom>(request);
         var classroom = await _classService.AddClassroomAsync(classModel);
 
         return CreatedAtAction(nameof(AddClassroom), classroom);

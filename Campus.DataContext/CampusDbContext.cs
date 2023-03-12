@@ -12,10 +12,10 @@ public class CampusDbContext : DbContext
 
     public DbSet<Classroom> Classrooms { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
-    public DbSet<Lesson> Lessons { get; set; }
-    public DbSet<LessonNumber> LessonNumbers { get; set; }
-    public DbSet<Teacher> Teachers { get; set; }
-    public DbSet<TeacherLessons> TeacherLesson { get; set; }
+    public DbSet<Course> Lessons { get; set; }
+    public DbSet<TimeTable> LessonNumbers { get; set; }
+    public DbSet<Educator> Teachers { get; set; }
+    public DbSet<EducatorCourse> TeacherLesson { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

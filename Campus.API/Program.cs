@@ -3,11 +3,11 @@ using Campus.Subject.DataContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCampusMvc();
 builder.Services.ConfigureValidation();
 builder.Services.ConfigureSwagger();
 builder.Services.ConfigureApplicationService();
 
+builder.Services.AddCampusMvc();
 builder.Services.AddDataContext(builder.Configuration);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
@@ -24,6 +24,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseExceptionMiddleware();
 
 app.MapControllers();
 

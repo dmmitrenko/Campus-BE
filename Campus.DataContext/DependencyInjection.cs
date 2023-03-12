@@ -19,8 +19,8 @@ public static class DependencyInjection
 
         services.AddScoped<CampusDbContext>();
 
-        services.AddScoped<IReadTeacherRepository, ReadTeacherRepository>();
-        services.AddScoped<IReadSubjectRepository, ReadSubjectRepository>();
+        services.AddScoped<IReadEducatorRepository, ReadEducatorRepository>();
+        services.AddScoped<IReadCourseRepository, ReadCourseRepository>();
         services.AddScoped<IReadClassRepository, ReadClassRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();

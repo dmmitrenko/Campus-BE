@@ -1,5 +1,5 @@
 ﻿namespace Campus.DataContext.Entities;
-public class LessonNumber
+public class TimeTable
 {
     public int Number { get; set; }
     public TimeOnly StartTime { get; set; }

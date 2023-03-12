@@ -4,13 +4,13 @@ using Campus.DataContext.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Campus.DataContext.Repositories.Implementations;
-public class ReadSubjectRepository : ReadRepository<Lesson>, IReadSubjectRepository
+public class ReadCourseRepository : ReadRepository<Course>, IReadCourseRepository
 {
-    public ReadSubjectRepository(CampusDbContext context) : base(context)
+    public ReadCourseRepository(CampusDbContext context) : base(context)
     {
     }
 
-    public async Task<Lesson?> GetSubjectWithTeachers(Guid subjectId)
+    public async Task<Course?> GetSubjectWithTeachers(Guid subjectId)
     {
         return await _dbSet.AsNoTracking()
             .Include(n => n.TeacherLessons)

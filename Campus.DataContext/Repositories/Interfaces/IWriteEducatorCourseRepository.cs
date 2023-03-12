@@ -2,7 +2,6 @@
 using Campus.DataContext.Repositories.Base;
 
 namespace Campus.DataContext.Repositories.Interfaces;
-public interface IReadSubjectRepository : IReadRepository<Lesson>
+public interface IWriteEducatorCourseRepository : IWriteRepository<EducatorCourse>
 {
-    Task<Lesson?> GetSubjectWithTeachers(Guid subjectId);
 }

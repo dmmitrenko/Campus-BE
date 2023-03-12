@@ -3,7 +3,7 @@
 namespace Campus.Core.Interfaces;
 public interface IEducatorService
 {
-    Task<TeacherModel> AddTeacherAsync(TeacherModel teacherModel);
-    Task<IEnumerable<LessonModel>> GetTeacherLessonsAsync(Guid teacherId);
-    Task<TeacherLessonsModel> AddTeacherLessonsAsync(TeacherLessonsModel teacherLessonsModel);
+    Task<Educator> AddTeacherAsync(Educator teacherModel);
+    Task<IEnumerable<Course>> GetTeacherLessonsAsync(Guid teacherId);
+    Task<EducatorCourse> AddTeacherLessonsAsync(EducatorCourse teacherLessonsModel);
 }

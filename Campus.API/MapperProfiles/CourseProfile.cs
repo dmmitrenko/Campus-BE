@@ -8,6 +8,6 @@ public class CourseProfile : Profile
 {
     public CourseProfile()
     {
-        CreateMap<AddSubjectRequest, LessonModel>();
+        CreateMap<AddSubjectRequest, Course>();
     }
 }

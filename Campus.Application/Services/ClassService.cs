@@ -18,12 +18,12 @@ public class ClassService : IClassService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<ClassroomModel> AddClassroomAsync(ClassroomModel classroom)
+    public async Task<Domain.Models.Classroom> AddClassroomAsync(Domain.Models.Classroom classroom)
     {
-        var classEntity = _mapper.Map<Classroom>(classroom);
+        var classEntity = _mapper.Map<DataContext.Entities.Classroom>(classroom);
         _unitOfWork.ClassRepository.Add(classEntity);
 
         await _unitOfWork.SaveChangesAsync();
-        return _mapper.Map<ClassroomModel>(classEntity);
+        return _mapper.Map<Domain.Models.Classroom>(classEntity);
     }
 }

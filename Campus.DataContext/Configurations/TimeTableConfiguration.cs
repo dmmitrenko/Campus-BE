@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campus.DataContext.Configurations;
-public class LessonNumberConfiguration : IEntityTypeConfiguration<LessonNumber>
+public class TimeTableConfiguration : IEntityTypeConfiguration<TimeTable>
 {
-    public void Configure(EntityTypeBuilder<LessonNumber> builder)
+    public void Configure(EntityTypeBuilder<TimeTable> builder)
     {
         builder.HasKey(x => x.Number);
         builder.Property(x => x.StartTime).IsRequired();

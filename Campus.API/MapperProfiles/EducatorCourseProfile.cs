@@ -8,6 +8,6 @@ public class EducatorCourseProfile : Profile
 {
     public EducatorCourseProfile()
     {
-        CreateMap<AddSubjectForTeacherRequest, TeacherLessonsModel>();
+        CreateMap<AddSubjectForTeacherRequest, EducatorCourse>();
     }
 }

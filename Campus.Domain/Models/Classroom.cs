@@ -1,5 +1,5 @@
 ﻿namespace Campus.Domain.Models;
-public class ClassroomModel
+public class Classroom
 {
     public Guid Id { get; set; }
     public string Title { get; set; }
@@ -8,5 +8,5 @@ public class ClassroomModel
     public DateOnly SemesterEndDate { get; set; }
     public int SemesterNumber { get; set; }
 
-    public IEnumerable<ScheduleModel> Schedules { get; set; }
+    public IEnumerable<Schedule> Schedules { get; set; }
 }
