@@ -1,9 +1,11 @@
 ﻿namespace Campus.API.Models.Requests;
 
-public record AddEducatorRequest
+public class AddEducatorRequest
 {
-    public string FirstName { get; init; }
-    public string? MiddleName { get; init; }
-    public string LastName { get; init; }
-    public string Email { get; init; }
+    public const string Route = "v1/educator";
+
+    public string FirstName { get; set; }
+    public string? MiddleName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
 }
