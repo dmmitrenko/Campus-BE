@@ -1,10 +1,11 @@
 ﻿using Campus.DataContext.Entities;
 using Campus.DataContext.SeedData;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Campus.DataContext;
-public class CampusDbContext : DbContext
+public class CampusDbContext : IdentityDbContext<User>
 {
     public CampusDbContext(DbContextOptions options) : base(options)
     {

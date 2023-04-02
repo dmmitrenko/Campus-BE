@@ -11,8 +11,10 @@ public static class ExceptionMapper
     {
         StatusesMapper = new Dictionary<Type, Func<Exception, ResponseDetails>>
         {
-            [typeof(NotFoundException)] = (e) => new ResponseDetails(HttpStatusCode.NotFound, e.Message, LogLevel.Warning),
+            [typeof(NotFoundException)] = (e) => new ResponseDetails(HttpStatusCode.BadRequest, e.Message, LogLevel.Warning),
             [typeof(ValidationException)] = (e) => new ResponseDetails(HttpStatusCode.BadRequest, e.Message, LogLevel.Warning),
+            [typeof(InvalidTokenException)] = (e) => new ResponseDetails(HttpStatusCode.BadRequest, e.Message, LogLevel.Error),
+            [typeof(InvalidCredentialsException)] = (e) => new ResponseDetails(HttpStatusCode.Unauthorized, e.Message, LogLevel.Error)
         };
     }
 

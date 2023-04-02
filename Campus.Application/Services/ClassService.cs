@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Campus.Core.Interfaces;
-using Campus.DataContext.Entities;
 using Campus.DataContext.Repositories.UoW;
-using Campus.Domain.Models;
 
 namespace Campus.Application.Services;
 public class ClassService : IClassService
