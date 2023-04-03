@@ -3,9 +3,8 @@ using Campus.API.Controllers.Base;
 using Campus.API.Models.Requests.Accounts;
 using Campus.API.Models.Responses;
 using Campus.Core.Interfaces;
-using Campus.DataContext.Entities;
 using Campus.Domain.Exceptions;
-using Microsoft.AspNetCore.Components;
+using Campus.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -45,4 +44,17 @@ public class AuthenticationController : BaseController<AuthenticationController>
             RefreshToken = token.RefreshToken,
         };
     }
+
+    [HttpPost(RegistrationRequest.Route)]
+    [ProducesResponseType(typeof(RegistrationResponse), 200)]
+    public async Task<RegistrationResponse> RegisterUser(RegistrationRequest request)
+    {
+        var user = Mapper.Map<User>(request);
+        var response = await _userService.RegisterUser(user);
+
+        return new RegistrationResponse
+        {
+            Result = response
+        };
+    } 
 }

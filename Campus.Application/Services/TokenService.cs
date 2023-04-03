@@ -132,7 +132,16 @@ public class TokenService : ITokenService
 
     private string GenerateToken(User user, string issuer, string audience, int expiration)
     {
-        var key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable(Key));
+        var password = "DMMYTRENKO";
+        var iterations = 10000;
+
+        var salt = new byte[16];
+        using (var generator = new RNGCryptoServiceProvider())
+        {
+            generator.GetBytes(salt);
+        }
+
+        var key = new Rfc2898DeriveBytes(password, salt, iterations).GetBytes(32);
 
         var claims = new List<Claim>
         {

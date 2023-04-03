@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Campus.DataContext.Migrations
 {
     [DbContext(typeof(CampusDbContext))]
-    [Migration("20230402105321_AddedRolesToDb")]
-    partial class AddedRolesToDb
+    [Migration("20230403155643_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -525,15 +525,15 @@ namespace Campus.DataContext.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d8ddbd54-1ab5-482b-936a-e38f8665a4f9",
-                            ConcurrencyStamp = "9ad4cf59-4f13-4b4e-a668-29d6f6b4e2c2",
+                            Id = "2fa462f4-fe01-42be-b3c3-a46fa985a2a8",
+                            ConcurrencyStamp = "581609ad-7214-40dd-9d1c-7f775798d2c5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "dc6e8162-5a19-4921-9bc1-930db7130796",
-                            ConcurrencyStamp = "783d665f-efcd-45ac-a607-8d4f1924a033",
+                            Id = "73dae346-a754-4a00-9562-83163fcc8b14",
+                            ConcurrencyStamp = "1a380584-02ec-46bd-b56a-8b6397ec1944",
                             Name = "Educator",
                             NormalizedName = "EDUCATOR"
                         });

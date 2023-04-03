@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Campus.Domain.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,12 +14,12 @@ public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
         builder.HasData(
             new IdentityRole
             {
-                Name = "Admin",
+                Name = Roles.Admin.ToString(),
                 NormalizedName = admin
             },
             new IdentityRole
             {
-                Name = "Educator",
+                Name = Roles.Educator.ToString(),
                 NormalizedName = educator
             });
     }
