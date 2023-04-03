@@ -4,7 +4,7 @@ namespace Campus.API.Models.Requests.Accounts;
 
 public record RegistrationRequest
 {
-    public const string Route = "";
+    public const string Route = "v1";
     public string FirstName { get; init; }
     public string LastName { get; init; }
     public string Username { get; init; }

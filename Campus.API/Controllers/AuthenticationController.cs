@@ -5,7 +5,6 @@ using Campus.API.Models.Responses;
 using Campus.Core.Interfaces;
 using Campus.Domain.Exceptions;
 using Campus.Domain.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Campus.API.Controllers;
